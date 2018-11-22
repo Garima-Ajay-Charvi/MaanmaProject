@@ -1,0 +1,30 @@
+
+#knowWeather {
+    background-color: aquamarine;
+}
+
+
+#heading {
+    color: darkblue;
+}
+#weather-search {
+    text-align: center;
+}
+input {
+    background:transparent;
+}
+#detailWeather {
+    color: blue;
+}
+#city, #countryName {
+    color: darkgoldenrod;
+    font-size: 30px;
+}
+span {
+    color: darkgoldenrod;
+    font-size: 18px;
+    font-weight: bold;
+}
+#currentWeather th {
+    width: 120px;
+}

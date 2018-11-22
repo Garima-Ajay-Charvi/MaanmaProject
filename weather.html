@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="manmaApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+    <title>Weather</title>
+</head>
+
+<body ng-controller="weatherCtrl">
+    <main id="knowWeather">
+    <nav id="weather-search">
+        <div>
+       <h2 id="heading">What's the Weather of <br><em>{{city}}</em></h2>
+       <br>     
+       <article class="form">
+                <form ng-submit='weather(city)'>
+                    <input type="text" id="cityName" ng-model="city" placeholder="Enter City Name">
+                    <button class="btn btn-outline-info" type="submit">Enter</button>
+                </form>
+            </article>
+        </div>
+        <br>
+      <!--  <p>Date:<input type="date" name="date" id="date" ng-model="date"></p>  -->
+    </nav>
+    <section>
+        <div class="row" id="detailWeather">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-2" id="firstcol">
+                <p id = "city" ng-bind="city"></p>
+               <!-- <p id="date" ng-controller="dateCtrl">{{date + 1}}</p> -->
+                <p><b><em>{{description}}</b></em></p>
+                <img ng-src="{{image}}" alt="">
+                <p><span>{{temp_c}}&deg;c</span></p>
+                <p><b>Feels like: </b><span><b><em>{{feelsLike}}</b></em><b>&deg;c</b></span></p>
+            </div>
+            <div class="col-sm-4" id="firstcol">
+                <p id="countryName"><b><em>{{countryName}}</b></em></p>
+                <table id="currentWeather" style="width:100%">
+                        <tr>
+                          <th><b>Latitude:</b></th>
+                          <td><span> {{lat}} </span></td>
+                        </tr>
+                        <tr>
+                          <th><b>Longitude:</b></th>
+                          <td><span>{{lon}}</span></td>
+                        </tr>
+                        <tr>
+                          <th><b>Sunrise:</b></th>
+                          <td><span>{{sunRise}}</span></td>
+                        </tr>
+                        <tr>
+                          <th><b>Sunset:</b></th>
+                          <td><span> {{sunset}}</span></td>
+                        </tr>
+                        <tr>
+                          <th><b>Wind: </b></th>
+                          <td><span>{{wind}}<b>mph</b></span></td>
+                        </tr>
+                        <tr>
+                          <th><b>Humidity: </b></th>
+                          <td><span>{{humidity}}<b>%</b></span></td>
+                        </tr>
+                      </table>
+                            
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+    </section>
+</main>
+    <section class="table-responsive-sm">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                        <th>Date</th>
+                        <th>Temperature</th>
+                        <th>Description</th>
+                        <th>Icon</th>
+                        <th>Wind</th>
+                        <th>Sunrise</th>
+                        <th>Sunset</th>
+                    </tr>
+                </thead>
+                <tbody>
+            <tr ng-repeat="x in foreweather">
+                <td>{{x.date}}</td>
+                <td>{{x.day.avgtemp_c}}</td>
+                <td>{{x.day.condition.text}}</td>
+                <td><img ng-src="{{x.day.condition.icon}}" alt=""></td>
+                <td>{{x.day.maxwind_mph}}</td>
+                <td>{{x.astro.sunrise}}</td>
+                <td>{{x.astro.sunset}}</td>
+            </tr>
+        </tbody>
+        </table>
+    </section>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.7.5/angular-route.min.js"></script>
+    <!--   <script src="weather_service.js"></script>    -->
+    <script src="weather_controller.js"></script>
+</body>
+
+</html>
